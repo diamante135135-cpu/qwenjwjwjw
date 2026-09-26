@@ -1,16 +1,29 @@
 import React, { useState, useEffect } from 'react';
 
-// Image URLs from generated images
-const images = {
-  portrait: 'https://image.qwenlm.ai/generated-images/f671e6f7-c180-4771-9437-6fc7043a06f2/_result.png',
-  story: 'https://image.qwenlm.ai/generated-images/108e8c88-ba8b-47cb-9569-bfaa42625f7e/_result.png',
-  gallery1: 'https://image.qwenlm.ai/generated-images/53c33be8-bce7-47e3-b499-e291a18ac0b5/_result.png',
-  gallery2: 'https://image.qwenlm.ai/generated-images/ba93a5d2-6dfd-4a53-be52-0f84c05f6954/_result.png',
-  gallery3: 'https://image.qwenlm.ai/generated-images/8d195014-d1c5-45a0-8548-684e440cd6bc/_result.png',
-  gallery4: 'https://image.qwenlm.ai/generated-images/c24f2ee5-8fd4-4536-95a0-ee11067b9734/_result.png',
-  special: 'https://image.qwenlm.ai/generated-images/bf3c8d1c-3dc4-45e9-9ac9-3639ba1a10af/_result.png',
-  closing: 'https://image.qwenlm.ai/generated-images/092a32c7-c6f4-4620-a3e0-dbf0c896cbbe/_result.png',
-};
+// Placeholder component for images
+function ImagePlaceholder({ className = '', label = 'Aquí va la imagen' }: { className?: string; label?: string }) {
+  return (
+    <div className={`relative flex items-center justify-center bg-[#ebe5de] ${className}`}>
+      <div className="absolute inset-0 border border-[#d4c5a9]/30"></div>
+      {/* Subtle decorative corner elements */}
+      <div className="absolute top-3 left-3 w-4 h-4 border-t border-l border-[#b8965a]/20"></div>
+      <div className="absolute top-3 right-3 w-4 h-4 border-t border-r border-[#b8965a]/20"></div>
+      <div className="absolute bottom-3 left-3 w-4 h-4 border-b border-l border-[#b8965a]/20"></div>
+      <div className="absolute bottom-3 right-3 w-4 h-4 border-b border-r border-[#b8965a]/20"></div>
+      {/* Center content */}
+      <div className="flex flex-col items-center gap-2">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" className="opacity-30">
+          <rect x="2" y="4" width="24" height="20" rx="2" stroke="#b8965a" strokeWidth="1"/>
+          <circle cx="9" cy="11" r="2.5" stroke="#b8965a" strokeWidth="1"/>
+          <path d="M2 20L8 14L13 18L18 12L26 20" stroke="#b8965a" strokeWidth="1" strokeLinejoin="round"/>
+        </svg>
+        <span className="font-sans-modern text-[11px] font-light text-[#b8965a]/60 tracking-wide">
+          {label}
+        </span>
+      </div>
+    </div>
+  );
+}
 
 function FloralOrnament() {
   return (
@@ -36,13 +49,9 @@ function SectionDivider() {
 function Portada() {
   return (
     <section className="relative">
-      {/* Hero Image */}
+      {/* Hero Image Placeholder */}
       <div className="relative w-full h-[55vh] min-h-[380px] max-h-[500px] overflow-hidden">
-        <img 
-          src={images.portrait} 
-          alt="Retrato" 
-          className="w-full h-full object-cover object-top"
-        />
+        <ImagePlaceholder className="w-full h-full" label="Aquí va la imagen" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#faf7f4]"></div>
       </div>
       
@@ -79,11 +88,7 @@ function Historia() {
       </div>
       
       <div className="image-frame mb-9">
-        <img 
-          src={images.story} 
-          alt="Historia" 
-          className="w-full h-60 object-cover"
-        />
+        <ImagePlaceholder className="w-full h-60" label="Aquí va la imagen" />
       </div>
       
       <div className="space-y-5">
@@ -120,47 +125,27 @@ function Galeria() {
 
       {/* Large vertical photo */}
       <div className="image-frame mb-4">
-        <img 
-          src={images.gallery1} 
-          alt="Recuerdo familiar" 
-          className="w-full h-80 object-cover"
-        />
+        <ImagePlaceholder className="w-full h-80" label="Aquí va la imagen" />
       </div>
 
       {/* Horizontal photo */}
       <div className="image-frame mb-4">
-        <img 
-          src={images.gallery2} 
-          alt="Paisaje" 
-          className="w-full h-48 object-cover"
-        />
+        <ImagePlaceholder className="w-full h-48" label="Aquí va la imagen" />
       </div>
 
       {/* Two small photos side by side */}
       <div className="grid grid-cols-2 gap-3 mb-4">
         <div className="image-frame">
-          <img 
-            src={images.gallery3} 
-            alt="Recuerdo" 
-            className="w-full h-44 object-cover"
-          />
+          <ImagePlaceholder className="w-full h-44" label="Aquí va la imagen" />
         </div>
         <div className="image-frame">
-          <img 
-            src={images.gallery4} 
-            alt="Recuerdo" 
-            className="w-full h-44 object-cover"
-          />
+          <ImagePlaceholder className="w-full h-44" label="Aquí va la imagen" />
         </div>
       </div>
 
       {/* Another large photo */}
       <div className="image-frame">
-        <img 
-          src={images.gallery4} 
-          alt="Recuerdo" 
-          className="w-full h-64 object-cover"
-        />
+        <ImagePlaceholder className="w-full h-64" label="Aquí va la imagen" />
       </div>
 
       <p className="mt-8 text-center font-sans-modern text-[12px] font-light text-[#8a817c] italic">
@@ -225,12 +210,8 @@ function MomentoEspecial() {
       </div>
 
       <div className="relative image-frame overflow-hidden">
-        <img 
-          src={images.special} 
-          alt="Momento especial" 
-          className="w-full h-56 object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+        <ImagePlaceholder className="w-full h-56" label="Aquí va la imagen" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
         <div className="absolute bottom-5 left-5 right-5">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center flex-shrink-0">
@@ -274,14 +255,10 @@ function MomentoEspecial() {
 function Cierre() {
   return (
     <section className="relative">
-      {/* Final large photo */}
+      {/* Final large photo placeholder */}
       <div className="relative w-full h-[45vh] min-h-[300px] max-h-[400px] overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-[#f5f0eb] via-transparent to-transparent z-10"></div>
-        <img 
-          src={images.closing} 
-          alt="Cierre" 
-          className="w-full h-full object-cover"
-        />
+        <ImagePlaceholder className="w-full h-full" label="Aquí va la imagen" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#faf7f4] via-transparent to-transparent"></div>
       </div>
 
